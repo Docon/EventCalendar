@@ -1,0 +1,68 @@
+﻿body {
+    font-family: Verdana, Arial, Helvetica;
+    font-size: 12px;
+    background: #ddd;
+}
+
+.header
+{
+    margin: 30px;
+    text-align: center;
+}
+
+.header h1
+{
+    font-size: 28px;
+    color:#fff;
+}
+
+.header ul
+{
+    list-style: none;
+}
+
+.header ul
+{
+    display: inline-block;
+    padding: 10px;
+}
+
+.header ul a
+{
+    color: #000;
+}
+
+.header ul a:hover
+{
+    text-decoration: underline;
+}
+
+.content h2 
+{
+    font-size: 32px;
+}
+
+.content h3 
+{
+    color: #003333;
+    font-size: 24px;
+    text-transform: uppercase; 
+}
+
+.content {
+    text-align: center;
+    min-height: 200px;
+}
+
+.frame img{
+    border: 2px solid black;
+    padding: 4px;
+}
+
+.footer {
+    margin: 30px;
+    text-align: center;
+    color: white;
+}
+
+
