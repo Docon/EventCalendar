@@ -6,13 +6,14 @@
 <head>
     <meta charset="utf-8" />
     <title>Acme Events Company</title>
-    <link href="/css/styles.css" type="text/css" rel="stylesheet"/>
 
-    <link href="/css/calendario.css" type="text/css" rel="stylesheet"/>
-    <link href="/css/calendario_custom_2.css" type="text/css" rel="stylesheet"/>
-    <link href="/css/demo.css" type="text/css" rel="stylesheet"/>
-    <script src="js/modernizr.custom.63321.js"></script>
-
+    <link href="/CSS/Calendario/calendario.css" type="text/css" rel="stylesheet"/>
+    <link href="/CSS/Calendario/calendario_custom_ev.css" type="text/css" rel="stylesheet"/>
+    <link href="/CSS/Calendario/demo.css" type="text/css" rel="stylesheet"/>
+    <script src="/Scripts/Calendario/modernizr.custom.63321.js"></script>
+    
+    <link href="/CSS/styles.css" type="text/css" rel="stylesheet"/>
+    
 </head>
 <body>
     <form runat="server">
@@ -35,10 +36,12 @@
     </form>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script type="text/javascript" src="js/jquery.calendario.js"></script>
-	<script type="text/javascript" src="js/data.js"></script>
+    <script type="text/javascript" src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+	<script type="text/javascript" src="/Scripts/calendario/jquery.calendario.js"></script>
+    <script type="text/javascript" src="/Scripts/EventCalendar.js"></script>
     
-     <!-- calendario customizations -->
+    <!-- calendario customizations -->
+    <!--
 	<script type="text/javascript">
 
 	    //calendario start
@@ -110,7 +113,7 @@
 	    //calendario end
 
 	</script>
-    
+    -->
 
 </body>
 </html>

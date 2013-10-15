@@ -1,0 +1,409 @@
+
+.fc-calendar-container {
+	position: relative;
+	height: 400px;
+	width: 400px;
+}
+
+.fc-calendar {
+	width: 100%;
+	height: 100%;
+}
+
+.fc-calendar .fc-head {
+	height: 30px;
+	line-height: 30px;
+	background: #ccc;
+	color: #fff;
+}
+
+.fc-calendar .fc-body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	height: -moz-calc(100% - 30px);
+	height: -webkit-calc(100% - 30px);
+	height: calc(100% - 30px);
+}
+
+.fc-calendar .fc-row {
+	width: auto;
+}
+
+.fc-four-rows .fc-row  {
+	height: 25%;
+}
+
+.fc-five-rows .fc-row  {
+	height: 20%;
+}
+
+.fc-six-rows .fc-row {
+	height: 16.66%;
+	height: -moz-calc(100%/6);
+	height: -webkit-calc(100%/6);
+	height: calc(100%/6);
+}
+
+.fc-calendar .fc-row > div,
+.fc-calendar .fc-head > div {
+	float: left;
+	height: 100%;
+	position: relative;
+}
+
+.fc-calendar .fc-row > div {
+	border-right: 1px solid #ddd;
+	padding: 4px;
+	overflow: hidden;
+	position: relative;
+}
+
+.fc-calendar .fc-head > div {
+	text-align: center;
+}
+
+.fc-calendar .fc-row > div > span.fc-date {
+	width: 20px;
+	font-size: 18px;
+	line-height: 20px;
+	font-weight: 700;
+	color: #ddd;
+	text-shadow: 0 -1px 0 rgba(255,255,255,0.8);
+	text-align: left;
+}
+
+.fc-calendar .fc-row > div > span.fc-weekday {
+	padding-left: 5px;
+	display: none;
+}
+
+.fc-calendar .fc-row > div.fc-today {
+	background: #fff4c3;
+}
+
+.fc-calendar .fc-row > div.fc-out {
+	opacity: 0.6;
+}
+
+.fc-calendar .fc-row > div:last-child,
+.fc-calendar .fc-head > div:last-child {
+	border-right: none;
+}
+
+
+/*
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+*/
+
+
+/* Custom calendar elements */
+.custom-calendar-wrap {
+	margin: 10px auto;
+	position: relative;
+	/* overflow: hidden; */
+}
+
+.custom-inner {
+	background: #fff;
+}
+
+.custom-inner:before,
+.custom-inner:after  {
+	content: '';
+	width: 99%;
+	height: 50%;
+	position: absolute;
+	background: #f6f6f6;
+	bottom: -4px;
+	left: 0.5%;
+	z-index: -1;
+}
+
+.custom-inner:after {
+	content: '';
+	width: 98%;
+	bottom: -7px;
+	left: 1%;
+	z-index: -2;
+}
+
+.custom-header {
+	background: #fff;
+	padding: 15px 15px 8px;
+	position: relative;
+}
+
+.custom-header h2,
+.custom-header h3 {
+	text-align: center;
+}
+
+.custom-header h2 {
+	color: #920000;
+	font-weight: 300;
+	font-size: 18px;
+	font-style:normal;
+}
+
+.custom-header h3 {
+	position:relative;
+	padding-top:10px;
+	font-size: 10px;
+	font-weight: 700;
+	color: #b7bbc2;
+}
+
+.custom-header nav span {
+	position: absolute;
+	top: 0px;
+	width: 30px;
+	color: transparent;
+	cursor: pointer;
+	margin: 0 1px;
+	font-size: 20px;
+	line-height: 30px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.custom-header nav span.custom-prev 
+{
+    top:8px;
+	left: 5px;
+}
+
+.custom-header nav span.custom-next
+{
+    top:8px;
+	right: 5px;
+}
+.custom-header nav span.custom-prev:before 
+{
+    color:#920000;
+	content: '\00AB';
+}
+
+.custom-header nav span.custom-next:before 
+{
+    color:#920000;
+	content: '\00BB';
+}
+
+.custom-header nav span:hover:before {
+	color: #495468;
+}
+
+/* Day pop-up */
+#calpop {
+	background: #E4E4E4;
+	width: 300px;
+	position: absolute;
+	z-index: 100;
+	top: 160px;
+	left: 250px;
+}
+
+#calpop h4 
+{
+    text-transform:none;
+	font-size: 16px;
+	font-weight: 700;
+	color: #777;
+	padding: 15px 15px 4px 7px;
+	background: #E4E4E4;
+}
+
+#calpop .evts
+{
+    display:block;
+    background: #fff;
+    z-index: 100;
+    padding: 8px 0 8px 8px;
+    overflow-y:auto;
+    height: 200px;
+    border:3px solid #E4E4E4;
+}
+
+#calpop .evts p
+{
+    color: #777;
+}
+#calpop .evts p span.title,
+#calpop .evts p span.time {
+    font-weight:bold;
+}
+#calpop .evts  a {
+    color: #920000;
+}
+
+#calpop span.calpop-close {
+	position: absolute;
+	top: 15px;
+	right: 10px;
+	width: 30px;
+	height: 17px;
+	text-align: center;
+	cursor: pointer;
+	line-height: 13px;
+	padding: 0;
+}
+
+#calpop span.calpop-close:after {
+	content: 'close';
+	font-size: 12px;
+	font-weight: 700;
+	color: #888;
+}
+
+#calpop span.calpop-close:hover {
+	text-decoration:underline;
+}
+
+/* Modifications */
+
+.fc-calendar-container {
+	height: 550px;
+	width: 854px;
+	background: #f6f6f6;
+}
+.widgets .fc-calendar-container {
+	width: 633px;
+}
+
+.fc-calendar .fc-head {
+	background: #565656;
+	color: #ffffff;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+
+.fc-calendar .fc-body{
+	border:none;
+}
+.fc-calendar .fc-row > div:last-child{
+	border-right:1px solid #CCCCCC;
+}
+
+.fc-calendar .fc-row > div,
+.fc-calendar .fc-head > div {
+	height: 97%;    
+}
+
+.fc-calendar .fc-row > div {
+	background: #fff;
+	cursor: pointer;
+	border:1px solid #CCCCCC;
+	margin: 2px;
+	width: 108px;
+}
+.widgets .fc-calendar .fc-row > div {
+	width: 76px;
+}
+
+.fc-calendar .fc-head > div {
+	border-right:1px solid #fff;
+	width: 121px;
+}
+.widgets .fc-calendar .fc-head > div {
+	width: 89px;
+}
+
+.fc-calendar .fc-row > div:empty {
+	background: transparent;
+}
+
+.fc-calendar .fc-row > div > span.fc-date {
+	top: 5%;
+	left: 2%;
+	text-align: center;
+	color: #999999;
+	font-weight: 400;
+	pointer-events: none;
+}
+
+.fc-calendar .fc-row > div.fc-today {
+	background: #E4E4E4;
+	box-shadow: inset 0 -1px 1px rgba(0,0,0,0.1);
+}
+
+.fc-calendar .fc-row > div.fc-today > span.fc-date {
+	text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.fc-calendar .fc-row > div.fc-content div span
+{
+	margin:5px 0 0;
+	display:block;
+}
+
+.fc-calendar .fc-row > div.fc-content span.more 
+{
+    background: #fff;
+	margin:0;
+	text-align: right;
+	width: 42px;
+	position: absolute;
+	color: #920000;
+	font-size: 9px;
+	line-height: 20px;
+	right: 3px;
+	bottom: 3px;
+}
+
+.fc-calendar .fc-row > div.fc-content span.more:hover {
+	text-decoration:underline;
+}
+
+.fc-calendar .fc-row > div.fc-today.fc-content:after {
+	color: #b02c42;
+}
+
+.fc-calendar .fc-row > div.fc-content:hover:after{
+	color: #ef4;
+}
+
+.fc-calendar .fc-row > div.fc-today.fc-content:hover:after{
+	color: #fff;
+}
+
+.fc-calendar .fc-row > div > div a,
+.fc-calendar .fc-row > div > div span {
+	font-size: 9px;
+}
+
+@media screen and (max-width: 400px) {
+	.fc-calendar-container {
+		height: 300px;
+	}
+	.fc-calendar .fc-row > div > span.fc-date {
+		font-size: 15px;
+	}
+}

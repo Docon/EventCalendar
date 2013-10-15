@@ -6,22 +6,22 @@
     <div class="block">
         <asp:Literal runat="server" ID="ltlResults"></asp:Literal>
         <section class="main">
-        <div class="custom-calendar-wrap">
-			<div id="custom-inner" class="custom-inner">
-				<div class="custom-header clearfix">
-					<nav>
-						<span id="custom-prev" class="custom-prev"></span>
-						<span id="custom-next" class="custom-next"></span>
-					</nav>
-					<h2 id="custom-month" class="custom-month"></h2>
-					<h3 id="custom-year" class="custom-year"></h3>
-				</div>
-				<div id="calendar" class="fc-calendar-container"></div>
-			</div>
-		</div>
+        
+            <div class="custom-calendar-wrap">
+			    <div id="Div1" class="custom-inner">
+				    <div class="custom-header clearfix">
+					    <nav>
+						    <span id="Span1" class="custom-prev"></span>
+						    <span id="Span2" class="custom-next"></span>
+					    </nav>
+					    <h2  class="custom-month"><span id="Span3"></span> <span id="Span4" ></span></h2>
+				    </div>
+				    <div id="Div2" class="fc-calendar-container"></div>
+			    </div>
+                <div id="calpop"></div>
+		    </div>
+        
          </section>
-        
-        
     </div>
     
     

@@ -73,21 +73,25 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\calendario.css" />
-    <Content Include="css\calendario_custom_2.css" />
-    <Content Include="css\demo.css" />
-    <Content Include="css\styles.css" />
+    <Content Include="CSS\Calendario\calendario.css" />
+    <Content Include="CSS\Calendario\calendario_custom_ev.css" />
+    <Content Include="CSS\Calendario\demo.css" />
+    <Content Include="CSS\styles.css" />
     <Content Include="Default.aspx" />
     <Content Include="Events.aspx" />
-    <Content Include="images\bg.jpg" />
-    <Content Include="js\data.js" />
-    <Content Include="js\jquery.calendario.js" />
-    <Content Include="js\modernizr.custom.63321.js" />
+    <Content Include="Images\bg.jpg" />
+    <Content Include="Scripts\Calendario\jquery.calendario.js" />
+    <Content Include="Scripts\Calendario\modernizr.custom.63321.js" />
+    <Content Include="Scripts\EventCalendar.js" />
+    <Content Include="Scripts\Templates\CalendarDayPopup.html" />
+    <Content Include="Services\CalendarEvents.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\CalendarEventProviders\GoogleCalendarProvider.cs" />
     <Compile Include="Data\CalendarEventProviders\ICalendarEventProvider.cs" />
+    <Compile Include="Data\Models\CalendarArgs.cs" />
+    <Compile Include="Data\Models\ICalendarArgs.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -105,6 +109,10 @@
     <Compile Include="Data\Models\CalendarEvent.cs" />
     <Compile Include="Data\Models\ICalendarEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CalendarEvents.asmx.cs">
+      <DependentUpon>CalendarEvents.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -115,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />
+    <Content Include="AppConfig\EventCalendar.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
