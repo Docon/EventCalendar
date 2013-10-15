@@ -91,6 +91,8 @@
   <ItemGroup>
     <Compile Include="Data\CalendarEventProviders\GoogleCalendarProvider.cs" />
     <Compile Include="Data\CalendarEventProviders\ICalendarEventProvider.cs" />
+    <Compile Include="Data\Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Data\Extensions\StringExtensions.cs" />
     <Compile Include="Data\Models\CalendarArgs.cs" />
     <Compile Include="Data\Models\CalendarDayEvent.cs" />
     <Compile Include="Data\Models\ICalendarArgs.cs" />

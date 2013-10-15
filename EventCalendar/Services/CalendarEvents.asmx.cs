@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Services;
 using EventCalendar.Data.CalendarEventProviders;
+using EventCalendar.Data.Extensions;
 using EventCalendar.Data.Models;
 
 namespace EventCalendar.Services
@@ -22,7 +23,7 @@ namespace EventCalendar.Services
         public CalendarArgs GetMonthEvents(CalendarArgs args)
         {
             ICalendarEventProvider calendarProvider = new GoogleCalendarProvider();
-            args.EventDate = NormalizeUtc(args.EventDate);
+            args.EventDate = args.EventDate.NormalizeUtc();
 
             IEnumerable<ICalendarEvent> events = GetCalendarEventsForMonth(calendarProvider, args.EventDate.Year, args.EventDate.Month);
 
@@ -41,9 +42,8 @@ namespace EventCalendar.Services
         public CalendarArgs GetDayEvents(CalendarArgs args)
         {
             ICalendarEventProvider calendarProvider = new GoogleCalendarProvider();
-            args.EventDate = NormalizeUtc(args.EventDate);
 
-            List<ICalendarEvent> events = GetCalendarEventsForDay(calendarProvider, args.EventDate);
+            IEnumerable<ICalendarEvent> events = GetCalendarEventsForDay(calendarProvider, args.EventDate.NormalizeUtc());
 
             //IEnumerable<ICalendarEvent> recurringEventsForMonth = GetReccuringEventsForMonthW(args.EventDate.Year, args.EventDate.Month)
             //        .SelectMany(rliEvent => GetOccurancesInMonth(rliEvent, args.EventDate));
@@ -71,7 +71,7 @@ namespace EventCalendar.Services
         }
 
 
-        private static IEnumerable<ICalendarEvent> GetCalendarEventsForMonth(ICalendarEventProvider calendarProvider, int year, int month)
+        private IEnumerable<ICalendarEvent> GetCalendarEventsForMonth(ICalendarEventProvider calendarProvider, int year, int month)
         {
             DateTime monthStart = new DateTime(year, month, 1, 0, 0, 0);
             DateTime monthEnd = new DateTime(year, month, 1, 23, 59, 59).AddMonths(1).AddDays(-1);
@@ -83,7 +83,7 @@ namespace EventCalendar.Services
             return events;
         }
 
-        private List<ICalendarEvent> GetCalendarEventsForDay(ICalendarEventProvider calendarProvider, DateTime day)
+        private IEnumerable<ICalendarEvent> GetCalendarEventsForDay(ICalendarEventProvider calendarProvider, DateTime day)
         {
             DateTime dayStart = new DateTime(day.Year, day.Month, day.Day, 0, 0, 0);
             DateTime dayEnd = new DateTime(day.Year, day.Month, day.Day, 23, 59, 59);
@@ -168,31 +168,16 @@ namespace EventCalendar.Services
         }
 
         /// <summary>
-        /// Gets HTML for the Day cell of the Calendar month view
+        /// Gets Event HTML for the Day cell of the Calendar month view
         /// </summary>
         /// <param name="evt">the Event</param>
         /// <returns></returns>
         private string GetMonthEvent(ICalendarEvent evt)
         {
             //For the Month titles, we need to shorten for the Day cells on the Calendar view
-            string title = ShortenString(evt.Title, 30);
+            string title = evt.Title.ShortenString(30);
             return String.Format("<span>{0}</span>", title);
         }
 
-        private DateTime NormalizeUtc(DateTime dttm)
-        {
-            DateTime convertedDate = TimeZoneInfo.ConvertTimeToUtc(dttm, TimeZoneInfo.Local);
-            return convertedDate;
-        }
-
-        public static string ShortenString(string text, int length)
-        {
-            if (length < 1)
-            {
-                return text;
-            }
-
-            return (text.Length > length ? text.Substring(0, length) + "..." : text);
-        }
     }
 }
