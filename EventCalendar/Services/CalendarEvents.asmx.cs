@@ -6,7 +6,7 @@ using System.Web.Services;
 using EventCalendar.Data.CalendarEventProviders;
 using EventCalendar.Data.Models;
 
-namespace EventCalendar.services
+namespace EventCalendar.Services
 {
     /// <summary>
     /// Gets events from a data provider for a given month or day
@@ -33,24 +33,12 @@ namespace EventCalendar.services
             //      .SelectMany(e => GetOccurancesInMonth(e, args.EventDate)));
 
             //serialize events into the required format for the JSON string
-            args.MonthEvents = SerializeEventsForCalendarioJSON(events,2);
+            args.MonthEvents = SerializeEventsForCalendarioJson(events,2);
             return args;
         }
 
-        private static IEnumerable<ICalendarEvent> GetCalendarEventsForMonth(ICalendarEventProvider calendarProvider, int year, int month)
-        {
-            DateTime monthStart = new DateTime(year, month, 1, 0, 0, 0);
-            DateTime monthEnd = new DateTime(year, month, 1, 23, 59, 59).AddMonths(1).AddDays(-1);
-
-            IEnumerable<ICalendarEvent> events = calendarProvider
-                .GetEventsForTimeFrame(monthStart, monthEnd)
-                .OrderBy(e => e.StartTime);
-
-            return events;
-        }
-
         [WebMethod]
-        public CalendarArgs GetCalendarDayEvents(CalendarArgs args)
+        public CalendarArgs GetDayEvents(CalendarArgs args)
         {
             ICalendarEventProvider calendarProvider = new GoogleCalendarProvider();
             args.EventDate = NormalizeUtc(args.EventDate);
@@ -68,6 +56,19 @@ namespace EventCalendar.services
             args.DayEvents = events;
 
             return args;
+        }
+
+
+        private static IEnumerable<ICalendarEvent> GetCalendarEventsForMonth(ICalendarEventProvider calendarProvider, int year, int month)
+        {
+            DateTime monthStart = new DateTime(year, month, 1, 0, 0, 0);
+            DateTime monthEnd = new DateTime(year, month, 1, 23, 59, 59).AddMonths(1).AddDays(-1);
+
+            IEnumerable<ICalendarEvent> events = calendarProvider
+                .GetEventsForTimeFrame(monthStart, monthEnd)
+                .OrderBy(e => e.StartTime);
+
+            return events;
         }
 
         private List<ICalendarEvent> GetCalendarEventsForDay(ICalendarEventProvider calendarProvider, DateTime day)
@@ -95,7 +96,7 @@ namespace EventCalendar.services
         /// <param name="events"></param>
         /// <param name="maxPerDay"></param>
         /// <returns></returns>
-        private string SerializeEventsForCalendarioJSON(IEnumerable<ICalendarEvent> events, int maxPerDay)
+        private string SerializeEventsForCalendarioJson(IEnumerable<ICalendarEvent> events, int maxPerDay)
         {
             string more = "<span class=more>More >></span>";
 

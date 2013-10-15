@@ -5,7 +5,7 @@ if (EventCalendar == null) {
 }
 
 var MonthEvents;
-var firstCalendarBuild = true;
+var FirstCalendarBuild;
 
 $(document).ready(function () {
 
@@ -15,8 +15,8 @@ $(document).ready(function () {
         return;
     }
 
-    var dttm = new Date();
-    EventCalendar.GetMonthEvents(dttm);
+    FirstCalendarBuild = true;
+    EventCalendar.GetMonthEvents(new Date());
 
 });
 
@@ -27,24 +27,23 @@ EventCalendar.GetMonthEvents = function(dttm) {
     //make ajax request
     var jsonData = JSON.stringify({ args: arguments });
     jQuery.ajax({
-        url: "/Services/Events.asmx/GetMonthEvents",
+        url: "/Services/CalendarEvents.asmx/GetMonthEvents",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         type: 'POST',
         data: jsonData,
         success: function(data) {
-            EventCalendar.BuildMonthEvents(data.d), EventCalendar.BuildCalendar()
+            EventCalendar.BuildMonthEvents(data.d), EventCalendar.BuildCalendar();
         },
         error: function(request, error, errorThrown) {
-            //todo: customize error message
             alert('An error has occurred in retrieving your data. Please try again.');
         }
     });
-};
+}
 
-EventCalendar.BuildCalendar = function() {
-
-    if (!firstCalendarBuild) {
+EventCalendar.BuildCalendar = function () {
+    
+    if (!FirstCalendarBuild) {
         cal.setData(MonthEvents);
     } else {
         $wrapper = $('#custom-inner'),
@@ -69,9 +68,9 @@ EventCalendar.BuildCalendar = function() {
             cal.gotoPreviousMonth(EventCalendar.UpdateMonthYear);
         });
 
-        firstCalendarBuild = false;
+        FirstCalendarBuild = false;
     }
-};
+}
 
 //get current calendar event arguments
 EventCalendar.GetArguments = function(dttm) {
@@ -80,13 +79,11 @@ EventCalendar.GetArguments = function(dttm) {
 
     var arguments = new Object();
     arguments.EventDate = dttm;
-    arguments.EventTagId = $('.fltrEvtTag').val();
-    arguments.EventTypeId = $('.fltrEvtType').val();
     arguments.MonthEvents = null;
     arguments.DayEvents = null;
 
     return arguments;
-};
+}
 
 //build the MonthEvents object for the month
 EventCalendar.BuildMonthEvents = function(args) {
@@ -94,7 +91,7 @@ EventCalendar.BuildMonthEvents = function(args) {
     var events = "MonthEvents = {" + args.MonthEvents + "}";
     eval(events);
 
-};
+}
 
 EventCalendar.UpdateMonthYear = function() {
     var m = cal.getMonth();
@@ -108,7 +105,7 @@ EventCalendar.UpdateMonthYear = function() {
     var dttm = new Date(y, m - 1, 1);
     EventCalendar.GetMonthEvents(dttm);
 
-};
+}
 
 // Get Day Events
 EventCalendar.GetDayEvents = function($el, dateProperties) {
@@ -131,7 +128,7 @@ EventCalendar.GetDayEvents = function($el, dateProperties) {
             alert('An error has occurred in retrieving your data. Please try again.');
         }
     });
-};
+}
 
 //build event result set for day
 EventCalendar.BuildDayEvents = function($el, d, dateProperties) {
@@ -155,7 +152,7 @@ EventCalendar.BuildDayEvents = function($el, d, dateProperties) {
     }
 
     //get content: events merged with result template
-    $.get('/js/templates/CalendarDayPopup.html', function(htmlRetrieved) {
+    $.get('/Scripts/Templates/CalendarDayPopup.html', function(htmlRetrieved) {
         var $content = $('<div class="evts"></div>');
 
         //compile template

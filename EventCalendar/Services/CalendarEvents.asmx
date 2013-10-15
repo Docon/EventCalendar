@@ -1,1 +1,1 @@
-﻿<%@ WebService Language="C#" CodeBehind="CalendarEvents.asmx.cs" Class="EventCalendar.services.WebService1" %>
+﻿<%@ WebService Language="C#" CodeBehind="CalendarEvents.asmx.cs" Class="EventCalendar.Services.CalendarEvents" %>

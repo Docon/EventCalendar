@@ -4,22 +4,20 @@
     
     <h2>Events</h2> 
     <div class="block">
-        <section class="main">
-        
+        <section class="calendar">
             <div class="custom-calendar-wrap">
-			    <div id="Div1" class="custom-inner">
+			    <div id="custom-inner" class="custom-inner">
 				    <div class="custom-header clearfix">
 					    <nav>
-						    <span id="Span1" class="custom-prev"></span>
-						    <span id="Span2" class="custom-next"></span>
+						    <span id="custom-prev" class="custom-prev"></span>
+						    <span id="custom-next" class="custom-next"></span>
 					    </nav>
-					    <h2  class="custom-month"><span id="Span3"></span> <span id="Span4" ></span></h2>
+					    <h2  class="custom-month"><span id="custom-month"></span> <span id="custom-year" ></span></h2>
 				    </div>
-				    <div id="Div2" class="fc-calendar-container"></div>
+				    <div id="calendar" class="fc-calendar-container"></div>
 			    </div>
                 <div id="calpop"></div>
 		    </div>
-        
          </section>
     </div>
     

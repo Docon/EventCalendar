@@ -8,19 +8,26 @@ namespace EventCalendar.Data.CalendarEventProviders
 {
     public class GoogleCalendarProvider : ICalendarEventProvider
     {
-        private static readonly string ApplicationName = ConfigurationManager.AppSettings["CalendarApplicationName"];
-        private static readonly string Account = ConfigurationManager.AppSettings["CalendarProviderAccount"];
-        private static readonly string Password = ConfigurationManager.AppSettings["CalendarProviderAccount"];
-        private static readonly string QueryUrl = ConfigurationManager.AppSettings["CalendarQueryUrl"];
+        private static string _applicationName;
+        private static string _account;
+        private static string _password;
+        private static string _queryUrl;
 
+        public GoogleCalendarProvider()
+        {
+            _applicationName = ConfigurationManager.AppSettings["CalendarApplicationName"];
+            _account = ConfigurationManager.AppSettings["CalendarProviderAccount"];
+            _password = ConfigurationManager.AppSettings["CalendarProviderPassword"];
+            _queryUrl = ConfigurationManager.AppSettings["CalendarQueryUrl"];
+        }
         public List<CalendarEvent> GetEventsForTimeFrame(DateTime startTime, DateTime endTime)
         {
             var events = new List<CalendarEvent>();
 
-            var service = new CalendarService(ApplicationName);
-            service.setUserCredentials(Account, Password);
+            var service = new CalendarService(_applicationName);
+            service.setUserCredentials(_account, _password);
 
-            var query = new EventQuery(QueryUrl);
+            var query = new EventQuery(_queryUrl);
             query.StartTime = startTime;
             query.EndTime = endTime;
             EventFeed feed = service.Query(query);

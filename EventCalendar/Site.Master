@@ -10,7 +10,13 @@
     <link href="/CSS/Calendario/calendario.css" type="text/css" rel="stylesheet"/>
     <link href="/CSS/Calendario/calendario_custom_ev.css" type="text/css" rel="stylesheet"/>
     <link href="/CSS/Calendario/demo.css" type="text/css" rel="stylesheet"/>
-    <script src="/Scripts/Calendario/modernizr.custom.63321.js"></script>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/Scripts/underscore-min.js"></script>
+	
+    <script type="text/javascript" src="/Scripts/EventCalendar.js"></script>
+    
+    <script type="text/javascript" src="/Scripts/calendario/jquery.calendario.js"></script>
     
     <link href="/CSS/styles.css" type="text/css" rel="stylesheet"/>
     
@@ -35,10 +41,6 @@
   
     </form>
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript" src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
-	<script type="text/javascript" src="/Scripts/calendario/jquery.calendario.js"></script>
-    <script type="text/javascript" src="/Scripts/EventCalendar.js"></script>
     
     <!-- calendario customizations -->
     <!--

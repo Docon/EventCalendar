@@ -84,6 +84,7 @@
     <Content Include="Scripts\Calendario\modernizr.custom.63321.js" />
     <Content Include="Scripts\EventCalendar.js" />
     <Content Include="Scripts\Templates\CalendarDayPopup.html" />
+    <Content Include="Scripts\underscore-min.js" />
     <Content Include="Services\CalendarEvents.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
