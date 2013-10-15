@@ -4,7 +4,6 @@
     
     <h2>Events</h2> 
     <div class="block">
-        <asp:Literal runat="server" ID="ltlResults"></asp:Literal>
         <section class="main">
         
             <div class="custom-calendar-wrap">

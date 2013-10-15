@@ -10,23 +10,9 @@ namespace EventCalendar
 	public partial class Events : System.Web.UI.Page
 	{
 	    
-        private static bool ShowEventListBelowCalendar 
-        {
-            get
-            {
-                try
-                {
-                    return Convert.ToBoolean(ConfigurationManager.AppSettings["ShowEventListBelowCalendar"]);
-                }
-                catch
-                {
-                    return false;
-                }
-            }
-        }
-
 		protected void Page_Load(object sender, EventArgs e)
 		{
+
 		}
 
 	}

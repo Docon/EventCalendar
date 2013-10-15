@@ -13,15 +13,6 @@ namespace EventCalendar {
     public partial class Events {
         
         /// <summary>
-        /// ltlResults control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlResults;
-        
-        /// <summary>
         /// ltlData control.
         /// </summary>
         /// <remarks>
