@@ -7,6 +7,6 @@ namespace EventCalendar.Data.Models
     {
         public DateTime EventDate { get; set; }
         public string MonthEvents { get; set; }
-        public List<ICalendarEvent> DayEvents { get; set; }
+        public List<ICalendarDayEvent> DayEvents { get; set; }
     }
 }

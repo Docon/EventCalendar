@@ -92,7 +92,9 @@
     <Compile Include="Data\CalendarEventProviders\GoogleCalendarProvider.cs" />
     <Compile Include="Data\CalendarEventProviders\ICalendarEventProvider.cs" />
     <Compile Include="Data\Models\CalendarArgs.cs" />
+    <Compile Include="Data\Models\CalendarDayEvent.cs" />
     <Compile Include="Data\Models\ICalendarArgs.cs" />
+    <Compile Include="Data\Models\ICalendarDayEvent.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

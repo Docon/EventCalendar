@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
 using EventCalendar.Data.Models;
 using Google.GData.Calendar;
 
@@ -51,7 +52,8 @@ namespace EventCalendar.Data.CalendarEventProviders
             calendarEvent.EndTime = entry.Times[0].EndTime;
             calendarEvent.Title = entry.Title.Text;
             calendarEvent.Description = entry.Summary.Text;
-            calendarEvent.Description = String.Join(",", entry.Locations);
+            var theLocations = entry.Locations.Select(location => location.Label).ToList();
+            calendarEvent.Location = String.Join(",", theLocations);
             return calendarEvent;
         }
     }

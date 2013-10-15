@@ -53,9 +53,21 @@ namespace EventCalendar.Services
             //    .SelectMany(rliEvent => GetOccurancesInMonth(rliEvent, args.EventDate));
             //events.AddRange(multiDayEventsForMonth.Where(e => e.StartTime.Date == args.EventDate.Date));
 
-            args.DayEvents = events;
+            args.DayEvents = GetCalendarDayEvents(events);
 
             return args;
+        }
+
+        private List<ICalendarDayEvent> GetCalendarDayEvents(IEnumerable<ICalendarEvent> events)
+        {
+            var calendarDays = new List<ICalendarDayEvent>();
+            var calendarEvents = events as IList<ICalendarEvent> ?? events.ToList();
+
+            if (events == null || !calendarEvents.Any())
+                return calendarDays;
+
+            calendarDays = calendarEvents.Select(evt => new CalendarDayEvent(evt) as ICalendarDayEvent).ToList();
+            return calendarDays;
         }
 
 
@@ -83,7 +95,6 @@ namespace EventCalendar.Services
 
             return events.ToList();
         }
-
 
         /// <summary>
         /// Serializes events for into the json object format required for Calendario, i.e.: 

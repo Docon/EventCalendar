@@ -39,10 +39,10 @@ EventCalendar.GetMonthEvents = function(dttm) {
             alert('An error has occurred in retrieving your data. Please try again.');
         }
     });
-}
+};
 
-EventCalendar.BuildCalendar = function () {
-    
+EventCalendar.BuildCalendar = function() {
+
     if (!FirstCalendarBuild) {
         cal.setData(MonthEvents);
     } else {
@@ -70,7 +70,7 @@ EventCalendar.BuildCalendar = function () {
 
         FirstCalendarBuild = false;
     }
-}
+};
 
 //get current calendar event arguments
 EventCalendar.GetArguments = function(dttm) {
@@ -83,7 +83,7 @@ EventCalendar.GetArguments = function(dttm) {
     arguments.DayEvents = null;
 
     return arguments;
-}
+};
 
 //build the MonthEvents object for the month
 EventCalendar.BuildMonthEvents = function(args) {
@@ -91,7 +91,7 @@ EventCalendar.BuildMonthEvents = function(args) {
     var events = "MonthEvents = {" + args.MonthEvents + "}";
     eval(events);
 
-}
+};
 
 EventCalendar.UpdateMonthYear = function() {
     var m = cal.getMonth();
@@ -105,10 +105,10 @@ EventCalendar.UpdateMonthYear = function() {
     var dttm = new Date(y, m - 1, 1);
     EventCalendar.GetMonthEvents(dttm);
 
-}
+};
 
 // Get Day Events
-EventCalendar.GetDayEvents = function($el, dateProperties) {
+EventCalendar.GetDayEvents = function ($el, dateProperties) {
     //adjust month integer for zero-based month array
     dttm = new Date(dateProperties.year, dateProperties.month - 1, dateProperties.day);
     var arguments = EventCalendar.GetArguments(dttm);
@@ -121,14 +121,14 @@ EventCalendar.GetDayEvents = function($el, dateProperties) {
         dataType: "json",
         type: 'POST',
         data: jsonData,
-        success: function(data) {
+        success: function (data) {
             EventCalendar.BuildDayEvents($el, data.d, dateProperties);
         },
-        error: function(request, error, errorThrown) {
+        error: function (request, error, errorThrown) {
             alert('An error has occurred in retrieving your data. Please try again.');
         }
     });
-}
+};
 
 //build event result set for day
 EventCalendar.BuildDayEvents = function($el, d, dateProperties) {
