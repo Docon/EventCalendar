@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Web.Services;
 using EventCalendar.Data.CalendarEventProviders;
 using EventCalendar.Data.Extensions;
 using EventCalendar.Data.Models;
+using Ninject;
 
 namespace EventCalendar.Services
 {
@@ -22,7 +24,9 @@ namespace EventCalendar.Services
         [WebMethod]
         public CalendarArgs GetMonthEvents(CalendarArgs args)
         {
-            ICalendarEventProvider calendarProvider = new GoogleCalendarProvider();
+            IKernel kernel = new StandardKernel();
+            kernel.Load(Assembly.GetExecutingAssembly());
+            ICalendarEventProvider calendarProvider = kernel.Get<ICalendarEventProvider>();
             args.EventDate = args.EventDate.NormalizeUtc();
 
             IEnumerable<ICalendarEvent> events = GetCalendarEventsForMonth(calendarProvider, args.EventDate.Year, args.EventDate.Month);
