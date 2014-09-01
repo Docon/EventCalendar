@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventCalendar", "EventCalendar\EventCalendar.csproj", "{5477706D-72C2-45A5-BE34-CC86FC5509F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventCalendar.Tests", "EventCalendar.Tests\EventCalendar.Tests.csproj", "{6268E30D-01E4-4ED6-8824-4A008833F73B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{5477706D-72C2-45A5-BE34-CC86FC5509F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5477706D-72C2-45A5-BE34-CC86FC5509F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5477706D-72C2-45A5-BE34-CC86FC5509F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6268E30D-01E4-4ED6-8824-4A008833F73B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6268E30D-01E4-4ED6-8824-4A008833F73B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6268E30D-01E4-4ED6-8824-4A008833F73B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6268E30D-01E4-4ED6-8824-4A008833F73B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
